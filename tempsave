@@ -1,0 +1,23 @@
+<?php
+    $table = 'cars';
+    $firstName = $_POST['fname'];
+    $lastName = $_POST['lname'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+
+    $conn = mysqli_connect('localhost','abstract-programmer','webserverww','exampleDB');
+    if($conn->connect_error){
+        die('Connection Failed : '.$conn->connect_error);
+    }else{
+        $INSERT = "INSERT INTO alfa (voornaam, achternaam, email, tel) 
+        values(Rick, Janssen, rick.janssen@exmaple.nl, 06123456789)";
+        $stmt = $conn->prepare($INSERT);
+        $stmt->execute();
+        echo "Uw gegevens zijn succesvol opgeslagen";
+    }
+    $stmt->close();
+    $conn->close();
+
+
+
+?>

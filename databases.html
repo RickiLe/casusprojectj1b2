@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="header">
+        <ul id="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a class="active" href="databases.html">Database</a></li>
+        </ul>
+        <div>
+            <p>EPPEL</p>
+        </div>
+    </section>
+
+    <div id="divider">
+        <section id="knoppen">
+            <label class="custom-radio-btn">
+                <input value="mercedes" type="radio" name="table" checked>
+                <span class="checkmark"></span>
+                <p>Mercedes</p>
+            </label>
+
+            <label class="custom-radio-btn">
+                <input value="bugatti" type="radio" name="table">
+                <span class="checkmark"></span>
+                <p>Bugatti</p>
+            </label>
+
+            <label class="custom-radio-btn">
+                <input type="radio" name="table">
+                <span class="checkmark"></span>
+                <p>Peugeot</p>
+            </label>
+
+            <label class="custom-radio-btn">
+                <input type="radio" name="table">
+                <span class="checkmark"></span>
+                <p>Volkswagen</p>
+            </label>
+
+            <label class="custom-radio-btn">
+                <input type="radio" name="table">
+                <span class="checkmark"></span>
+                <p>BMW</p>
+            </label>
+
+            <label class="custom-radio-btn">
+                <input type="radio" name="table">
+                <span class="checkmark"></span>
+                <p>Ford</p>
+            </label>
+
+            <label class="custom-radio-btn">
+                <input type="radio" name="table">
+                <span class="checkmark"></span>
+                <p>Mazda</p>
+            </label>
+
+            <label class="custom-radio-btn">
+                <input type="radio" name="table">
+                <span class="checkmark"></span>
+                <p>Nissan</p>
+            </label>
+
+            <label class="custom-radio-btn">
+                <input type="radio" name="table">
+                <span class="checkmark"></span>
+                <p>Opel</p>
+            </label>
+
+            <label class="custom-radio-btn">
+                <input type="radio" name="table">
+                <span class="checkmark"></span>
+                <p>Renault</p>
+            </label>
+
+            <label class="custom-radio-btn">
+                <input type="radio" name="table">
+                <span class="checkmark"></span>
+                <p>Alfa</p>
+            </label>
+
+            <label class="custom-radio-btn">
+                <input type="radio" name="table">
+                <span class="checkmark"></span>
+                <p>Rolls</p>
+            </label>
+        </section>
+
+        <section id="tabel">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Voornaam</th>
+                    <th>Achternaam</th>
+                    <th>Email</th>
+                    <th>Telefoonnummer</th>
+                </tr>
+                <?php
+                $conn = mysqli_connect("192.168.56.52","admin","dataserverww","exampleDB");
+                $sql = "SELECT * FROM alfa";
+                $result = $conn->query($sql);
+            
+                if ($result->num_rows > 0) {
+                    while($row = $result-> fetch_assoc()){
+                        echo "<tr><td>" . $row["id"] . "</td><td>" . $row["voornaam"] . "</td><td>" . $row["achternaam"] . "</td><td>" . $row["email"] . "</td><td>" . $row["tel"] . "</td></tr>";
+                    }
+                } else {
+                    echo "No results";
+                }
+                $conn->close();
+                ?>
+            </table>
+        </section>
+    </div>
+
+</body>
+</html>
